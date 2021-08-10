@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowJs": true, // 자바스크립트 파일도 타입스크립트 체크를 할지 
+        "target": "ES5",
+        "outDir": "./dist", // 타입스크립트 결과물이 어디에 갈지
+        "moduleResolution": "Node", // Promise 관련 옵션 
+        "lib": ["ES2015", "DOM", "DOM.Iterable"],
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "module": "ES2015",
+        "strict": true
+     },
+     "include": ["./src/**/*"]
+}

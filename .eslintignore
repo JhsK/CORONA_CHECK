@@ -1,0 +1,6 @@
+node_modules
+dist
+webpack.config.js
+back
+./back/server.js
+server.js

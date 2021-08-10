@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORONA CHECK</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="main-postition">
+        <header>
+            <span class="header-span">CORONA-CHECK</span>
+            <div class="header-table">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">기준일</th>
+                        <th scope="col">누적검사 수</th>
+                        <th scope="col">누적 확진률</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="covid-state-dt"></td>
+                        <td class="covid-acc_exam_cnt"></td>
+                        <td class="covid-acc-def_rate"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="header-table">
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">누적 확진자</th>
+                      <th scope="col">누적 사망자</th>
+                      <th scope="col">치료중</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="covid-decide-cnt">확진자</td>
+                      <td class="covid-death-cnt">사망자</td>
+                      <td class="covid-care-cnt">치료중</td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </header>
+        <section class="today-score">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">기준일</th>
+                    <th scope="col">확진자 수</th>
+                    <th scope="col">검사진행 수</th>
+                    <th scope="col">사망자 수</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+        <section>
+            <h1>확진자 수 그래프</h1>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./dist/app.js"></script>
+</body>
+
+</html>

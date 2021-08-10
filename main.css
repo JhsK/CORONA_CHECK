@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#f4f4f4;
+}
+
+.main-postition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    width: 500px;
+    border: 1px solid rgba(70, 77, 82, 0.08);
+    border-radius: 16px;
+    margin: 2rem 0;
+    padding: 0.7rem 0;
+    background-color: #fff;
+}
+
+.header-span {
+    font-size: 1.5rem;
+}
+
+.header-table {
+    margin-top: 1.5rem;
+    margin-bottom: 1.8rem;
+}
+
+section {
+    width: 500px;
+    border: 1px solid rgba(70, 77, 82, 0.08);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    background-color: #fff;
+}
+
+.today-score {
+    padding: 0.8rem 0rem;
+}
