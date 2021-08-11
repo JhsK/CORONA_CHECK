@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { CovidData } from './util';
+import Chart from 'chart.js/auto';
 
 function $<T extends HTMLElement>(selector: string) {
   const element = document.querySelector(selector);
@@ -28,6 +29,69 @@ const TWO_DEATH_CNT = $('.covid-two-death-cnt');
 const THREE_DECIDE_CNT = $('.covid-three-decide-cnt');
 const THREE_DEATH_CNT = $('.covid-three-death-cnt');
 
+const labels: string[] = [];
+const datas: number[] = [];
+
+function renderChart(datas: number[], labels: string[]) {
+  const myChart = $('#myChart') as HTMLCanvasElement;
+  const ctx = myChart.getContext('2d');
+
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '일별 확진자 수',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: datas,
+        },
+      ],
+    },
+  });
+}
+
+function renderBarChart(datas: number[], labels: string[]) {
+  const myChart = $('#barChart') as HTMLCanvasElement;
+  const ctx = myChart.getContext('2d');
+
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '일별 확진자 수',
+          data: datas,
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
 function stackRate(rate: CovidData) {
   STATE_DT.innerText = rate.stateDt.toString();
   ACC_EXAM_CNT.innerText = `${rate.accExamCnt.toString()}건`;
@@ -40,16 +104,22 @@ function stackRate(rate: CovidData) {
 function todayOneRate(pastRate: CovidData, todayRate: CovidData) {
   ONE_DECIDE_CNT.innerText = String(todayRate.decideCnt - pastRate.decideCnt);
   ONE_DEATH_CNT.innerText = String(todayRate.deathCnt - pastRate.deathCnt);
+  datas.unshift(todayRate.decideCnt - pastRate.decideCnt);
+  labels.unshift(todayRate.stateDt.toString());
 }
 
 function todayTwoRate(pastRate: CovidData, todayRate: CovidData) {
   TWO_DECIDE_CNT.innerText = String(todayRate.decideCnt - pastRate.decideCnt);
   TWO_DEATH_CNT.innerText = String(todayRate.deathCnt - pastRate.deathCnt);
+  datas.unshift(todayRate.decideCnt - pastRate.decideCnt);
+  labels.unshift(todayRate.stateDt.toString());
 }
 
 function todayThreeRate(pastRate: CovidData, todayRate: CovidData) {
   THREE_DECIDE_CNT.innerText = String(todayRate.decideCnt - pastRate.decideCnt);
   THREE_DEATH_CNT.innerText = String(todayRate.deathCnt - pastRate.deathCnt);
+  datas.unshift(todayRate.decideCnt - pastRate.decideCnt);
+  labels.unshift(todayRate.stateDt.toString());
 }
 
 axios.get('http://localhost:3000/reset').then(res => {
@@ -64,4 +134,7 @@ axios.get('http://localhost:3000/reset').then(res => {
   ONE_STATE_DT.innerText = result[0].stateDt.toString();
   TWO_STATE_DT.innerText = result[1].stateDt.toString();
   THREE_STATE_DT.innerText = result[2].stateDt.toString();
+
+  renderChart(datas, labels);
+  renderBarChart(datas, labels);
 });

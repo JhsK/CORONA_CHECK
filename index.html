@@ -26,9 +26,9 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="covid-state-dt">기준일</td>
-                        <td class="covid-acc_exam_cnt">누적검사 수</td>
-                        <td class="covid-acc-def_rate">누적 확진률</td>
+                        <td style="width: 10%;" class="covid-state-dt">기준일</td>
+                        <td style="width: 10%;" class="covid-acc_exam_cnt">누적검사 수</td>
+                        <td style="width: 10%;" class="covid-acc-def_rate">누적 확진률</td>
                       </tr>
                     </tbody>
                   </table>
@@ -44,9 +44,9 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="covid-decide-cnt">확진자</td>
-                      <td class="covid-death-cnt">사망자</td>
-                      <td class="covid-care-cnt">치료중</td>
+                      <td style="width: 10%;" class="covid-decide-cnt">확진자</td>
+                      <td style="width: 10%;" class="covid-death-cnt">사망자</td>
+                      <td style="width: 10%;" class="covid-care-cnt">치료중</td>
                     </tr>
                   </tbody>
                 </table>
@@ -80,11 +80,23 @@
                 </tbody>
               </table>
         </section>
-        <section>
-            <h1>확진자 수 그래프</h1>
+        <section class="line-chart">
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
         </section>
+        <section class="line-chart">
+          <div>
+            <canvas id="barChart"></canvas>
+          </div>
+        </section>
+        <footer>
+          해당 코로나 데이터는 보건복지부_코로나19감염현황 조회 서비스 API를 이용하여 표현하였습니다.<br>
+          사실과 다를 수 있음을 주의해야합니다.
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./dist/app.js"></script>
 </body>
 
